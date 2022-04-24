@@ -1,23 +1,25 @@
 print("A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.\n")
 
-#using the math module to access math functions 
-import math 
-def prime_2(a):
-    try: #wrong user input handling
-        type(a) == int
-    except Exception as e:
-        print('Please enter an integer:' ,e)
-    if a == 1:
-        return False # 1 is not prime
-    max = math.floor(math.sqrt(a))
-    for i in range(2,1 + max):
-        if a % i == 0:
-            return True # is Prime
+# Program to check if a number is prime or not
+num = int(input('Enter a number: '))# To take input from the user
 
-num = input('Enter a number: ')
-#testing our function
-for a in range(int(num)+ 1):
-    print(a, prime_2(a))
+# prime numbers function
+def prime(num):
+    if num > 1: #prime numbers are greater than 1
+        # check for factors
+        for i in range(2, num):
+            if (num % i) == 0:
+                # if factor is found, set flag to True
+                return True
+                # break out of loop
+                break
+    return False
+
+# check what the function returns: True or False by inserting an if conditional statement
+if prime(num):
+    print(num, "is not a prime number")
+else:
+    print(num, "is a prime number")
 
 '''#time
 import time
